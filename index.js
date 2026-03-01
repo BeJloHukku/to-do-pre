@@ -17,7 +17,6 @@ formElement.addEventListener('submit', (event) => {
 	const markup = createItem(taskText);
 	listElement.prepend(markup);
 	items = getTasksFromDOM();
-	console.log(items)
 	saveTasks(items);
 	formElement.reset();
 });
@@ -39,7 +38,7 @@ function createItem(item) {
 
 	deleteButton.addEventListener('click', (event) => {
 		clone.remove();
-		let items = getTasksFromDOM();
+		const items = getTasksFromDOM();
 		saveTasks(items);
 	});
 
@@ -61,7 +60,6 @@ function createItem(item) {
 		const items = getTasksFromDOM();
 		saveTasks(items);
 	})
-
 	return clone;
 }
 
