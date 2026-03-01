@@ -35,7 +35,10 @@ function createItem(item) {
 }
 
 function getTasksFromDOM() {
-
+	const itemsNamesElements = document.querySelectorAll('.to-do__item-text');
+	let tasks = [];
+	itemsNamesElements.forEach( item => tasks.append(items.textContent));
+	return tasks;
 }
 
 function saveTasks(tasks) {
