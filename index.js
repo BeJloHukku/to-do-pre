@@ -11,7 +11,7 @@ const listElement = document.querySelector(".to-do__list");
 const formElement = document.querySelector(".to-do__form");
 const inputElement = document.querySelector(".to-do__input");
 
-formElement.addEventListener('submit', function (event) {
+formElement.addEventListener('submit', (event) => {
 	event.preventDefault();
 	const taskText = inputElement.value;
 	const markup = createItem(taskText);
@@ -36,6 +36,13 @@ function createItem(item) {
   	const duplicateButton = clone.querySelector(".to-do__item-button_type_duplicate");
   	const editButton = clone.querySelector(".to-do__item-button_type_edit");
 	textElement.textContent = item;
+
+	deleteButton.addEventListener('click', (event) => {
+		clone.remove();
+		let items = getTasksFromDOM();
+		saveTasks(items);
+	})
+
 	return clone;
 }
 
