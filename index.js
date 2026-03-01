@@ -16,7 +16,10 @@ formElement.addEventListener('submit', function (event) {
 	const taskText = inputElement.value;
 	const markup = createItem(taskText);
 	listElement.prepend(markup);
-	event.reset()
+	items = getTasksFromDOM();
+	console.log(items)
+	saveTasks(items);
+	formElement.reset();
 });
 
 function loadTasks() {
@@ -39,7 +42,7 @@ function createItem(item) {
 function getTasksFromDOM() {
 	const itemsNamesElements = document.querySelectorAll('.to-do__item-text');
 	let tasks = [];
-	itemsNamesElements.forEach( item => tasks.append(items.textContent));
+	itemsNamesElements.forEach( item => tasks.push(item.textContent));
 	return tasks;
 }
 
