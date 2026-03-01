@@ -41,12 +41,23 @@ function createItem(item) {
 		clone.remove();
 		let items = getTasksFromDOM();
 		saveTasks(items);
-	})
+	});
 
 	duplicateButton.addEventListener('click', (event) => {
 		const itemName = textElement.textContent;
 		const newItem = createItem(itemName);
 		listElement.prepend(newItem);
+		const items = getTasksFromDOM();
+		saveTasks(items);
+	});
+
+	editButton.addEventListener('click', (event) => {
+		textElement.setAttribute('contenteditable', true);
+		textElement.focus();
+	});
+
+	textElement.addEventListener('blur', (event) => {
+		textElement.setAttribute('contenteditable', false);
 		const items = getTasksFromDOM();
 		saveTasks(items);
 	})
