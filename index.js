@@ -11,18 +11,27 @@ const listElement = document.querySelector(".to-do__list");
 const formElement = document.querySelector(".to-do__form");
 const inputElement = document.querySelector(".to-do__input");
 
-function loadTasks() {
+formElement.addEventListener('submit', function (event) {
+	event.preventDefault();
+	const taskText = inputElement.value;
+	const markup = createItem(taskText);
+	listElement.prepend(markup);
+	event.reset()
+});
 
+function loadTasks() {
+	return items;
 }
 
 function createItem(item) {
 	const template = document.getElementById("to-do__item-template");
 	const clone = template.content.querySelector(".to-do__item").cloneNode(true);
-  const textElement = clone.querySelector(".to-do__item-text");
-  const deleteButton = clone.querySelector(".to-do__item-button_type_delete");
-  const duplicateButton = clone.querySelector(".to-do__item-button_type_duplicate");
-  const editButton = clone.querySelector(".to-do__item-button_type_edit");
-
+  	const textElement = clone.querySelector(".to-do__item-text");
+  	const deleteButton = clone.querySelector(".to-do__item-button_type_delete");
+  	const duplicateButton = clone.querySelector(".to-do__item-button_type_duplicate");
+  	const editButton = clone.querySelector(".to-do__item-button_type_edit");
+	textElement.textContent = item;
+	return clone;
 }
 
 function getTasksFromDOM() {
@@ -32,4 +41,10 @@ function getTasksFromDOM() {
 function saveTasks(tasks) {
 
 }
+
+items = loadTasks();
+items.forEach( item => {
+	const markup = createItem(item);
+	listElement.append(markup);
+})
 
