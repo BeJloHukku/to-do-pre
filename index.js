@@ -20,7 +20,9 @@ formElement.addEventListener('submit', function (event) {
 });
 
 function loadTasks() {
-	return items;
+	const savedTasks = localStorage.getItem('tasks');
+	tasks = savedTasks ? JSON.parse(savedTasks) : items;
+	return tasks;
 }
 
 function createItem(item) {
