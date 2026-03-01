@@ -42,7 +42,8 @@ function getTasksFromDOM() {
 }
 
 function saveTasks(tasks) {
-
+	const stringifiedTasks = JSON.stringify(tasks);
+	localStorage.setItem('tasks', stringifiedTasks);
 }
 
 items = loadTasks();
